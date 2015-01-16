@@ -1,0 +1,21 @@
+<h3> Add Contact </h3>
+
+<form action='/' method="post">
+  <div class="form-group">
+    <label for="contact_name">Contact Name</label>
+    <input id="contact_name" name="contact_name" class="form-control" type="text" placeholder="A man needs a name..." required>
+  </div>
+  <div class="form-group">
+    <label for="phone_number">Phone Number</label>
+    <input id="phone_number" name="phone_number" class="form-control" type="text" placeholder="and a number!" required>
+  </div>
+  <button type="submit" class="btn btn-success">Add!</button>
+</form>
+
+<h3> Contact List </h3>
+
+<div class="list-group">
+  <% @contacts.each() do |each_contact| %>
+    <a href="/contact_details/<%= each_contact.id() %>" class="list-group-item"> <%= each_contact.contact_name() %> </a>
+  <% end %>
+</div>

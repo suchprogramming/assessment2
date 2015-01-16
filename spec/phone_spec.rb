@@ -42,6 +42,26 @@ describe(Contact) do
       expect(Contact.all()).to(eq([]))
     end
 	end
+
+	describe(".id") do
+    it("assigns a unique id to each contact") do
+      test_contact1 = Contact.new({:contact_name => "Tyler", :phone_number => 1234567890})
+      test_contact1.save()
+      test_contact2 = Contact.new({:contact_name => "Becky", :phone_number => 1234567890})
+      test_contact2.save()
+      expect(test_contact2.id()).to(eq(2))
+    end
+	end
+
+	describe(".find") do
+    it("finds a contact according to its assigned id number") do
+      test_contact1 = Contact.new({:contact_name => "Tyler", :phone_number => 1234567890})
+      test_contact1.save()
+      test_contact2 = Contact.new({:contact_name => "Becky", :phone_number => 1234567890})
+      test_contact2.save()
+      expect(Contact.find(test_contact1.id())).to(eq(test_contact1))
+    end
+	end
 end
 
 
