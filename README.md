@@ -18,7 +18,7 @@ $ gem install bundler
 $ bundle
 ```
 ### Bug Reports
-No known bugs ^-^
+!!!!!
 
 ### Authors
 Tyler Whitsett
