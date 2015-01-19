@@ -1,6 +1,6 @@
 class Contact
 
-	@@contact_list = []
+  @@contact_list = []
 
   attr_reader(:contact_name, :phone_numbers)
 
@@ -31,17 +31,12 @@ class Contact
   end
 
   define_singleton_method(:find) do |get_contact|
-  	matched_contact = nil
-  	@@contact_list.each() do |contact|
-  		if contact.id.eql?(get_contact.to_i())
-  			matched_contact = contact
-  		end
-  	end
-  	matched_contact
+    matched_contact = nil
+    @@contact_list.each() do |contact|
+      if contact.id.eql?(get_contact.to_i())
+        matched_contact = contact
+      end
+    end
+    matched_contact
   end
 end
-
-
-
-
-	

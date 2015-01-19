@@ -1,6 +1,6 @@
 class Phone
 
-	@@all_phone_numbers = []
+  @@all_phone_numbers = []
 
   attr_reader(:home_phone, :cell_phone, :work_phone)
 

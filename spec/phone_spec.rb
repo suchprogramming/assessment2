@@ -5,21 +5,21 @@ require('contact')
 describe(Phone) do
 
   before() do
-  	Phone.clear()
+    Phone.clear()
   end
 
   describe(".all") do
-		it("holds all contacts eventually, begins empty") do
+    it("holds all contacts eventually, begins empty") do
       expect(Phone.all()).to(eq([]))
     end
-	end
+  end
 
-	describe(".clear") do
-		it("empties the saved contact list") do
-			Phone.clear()
+  describe(".clear") do
+    it("empties the saved contact list") do
+      Phone.clear()
       expect(Phone.all()).to(eq([]))
     end
-	end
+  end
 
   describe("#save") do
     it("saves a phone number to the all phone numbers object") do
@@ -29,4 +29,3 @@ describe(Phone) do
     end
   end
 end
-

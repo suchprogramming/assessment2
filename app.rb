@@ -5,7 +5,7 @@ require('./lib/contact')
 require('./lib/phone')
 
 get('/') do
-	@contacts = Contact.all()
+  @contacts = Contact.all()
   erb(:index)	
 end
 
