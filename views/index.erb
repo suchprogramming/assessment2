@@ -1,19 +1,23 @@
-<h3> Add Contact </h3>
+<div class='contacts'>
 
-<form action='/' method='post'>
-  <div class='form-group'>
-    <label for='contact_name'>Contact Name</label>
-    <input id='contact_name' name='contact_name' class='form-control' type='text' placeholder='A man needs a name...' required>
+  <h3> Add Contact </h3>
+
+  <form action='/' method='post'>
+    <div class='form-group'>
+      <label for='contact_name'>Contact Name</label>
+      <input id='contact_name' name='contact_name' class='form-control' type='text' placeholder='A man needs a name...' required>
+    </div>
+    <button type='submit' class='btn btn-success'>Add!</button>
+  </form>
+
+  <h3> Contact List </h3>
+
+
+  <div class='list-group'>
+    <% @contacts.each() do |each_contact| %>
+      <a href='/contact_details/<%= each_contact.id() %>' class='list-group-item'> <%= each_contact.contact_name() %>  </a>
+    <% end %>
   </div>
-  <button type='submit' class='btn btn-success'>Add!</button>
-</form>
 
-<h3> Contact List </h3>
-
-<div class='list-group'>
-  <% @contacts.each() do |each_contact| %>
-    <a href='/contact_details/<%= each_contact.id() %>' class='list-group-item'> <%= each_contact.contact_name() %> </a>
-  <% end %>
+  <a class="btn btn-danger" href="/clear_contacts" role="button">Delete Contacts!</a>
 </div>
-
-<a class="btn btn-danger" href="/clear_contacts" role="button">Delete Contacts!</a>

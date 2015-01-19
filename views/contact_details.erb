@@ -1,30 +1,43 @@
-<h3> Add Contact Info for <%= @contact.contact_name()%> </h3>
+<%if @contact.phone_numbers() == [] %>
+<h3> Add Contact Info </h3>
 
 <form action='/phones' method="post">
     <input id='contact_id' name='contact_id' type='hidden' value='<%= @contact.id() %>'>
   <div class='form-group'>
     <label for='home_phone'>Home Phone</label>
-    <input id='home_phone' name='home_phone' class='form-control' type='text' placeholder='Enter a home phone if available' required>
+    <input id='home_phone' name='home_phone' class='form-control' type='text' placeholder='Enter a home phone if available'>
   </div>
   <div class='form-group'>
     <label for='cell_phone'>Cell Phone</label>
-    <input id='cell_phone' name='cell_phone' class='form-control' type='text' placeholder='Enter a cell phone if available' required>
+    <input id='cell_phone' name='cell_phone' class='form-control' type='text' placeholder='Enter a cell phone if available'>
   </div>
   <div class='form-group'>
     <label for='work_phone'>Work Phone</label>
-    <input id='work_phone' name='work_phone' class='form-control' type='text' placeholder='Enter a work phone if available' required>
+    <input id='work_phone' name='work_phone' class='form-control' type='text' placeholder='Enter a work phone if available'>
   </div>
   <button type='submit' class='btn btn-success'>Add!</button>
 </form>
+<% end %>
 
-<h3> Current Contact Info </h3>
+<h3> Current Contact Info For <%= @contact.contact_name()%> </h3>
 
 <div class='list-group'>
 <%if @contact.phone_numbers() == [] %>
   <p> No contact info available! </p>
 <% else %>
 <% @contact.phone_numbers().each do |numbers| %>
-  <h4> Home Phone: <%= numbers.home_phone() %> Cell Phone: <%= numbers.cell_phone() %> Work Phone: <%= numbers.work_phone() %> </h4> 
+  <table class='table table-bordered'> 
+    <tr class='active'>
+      <th> Home Phone </th>
+      <th> Cell Phone </th>
+      <th> Work Phone </th>
+    </tr>
+    <tr>
+      <td> <%= numbers.home_phone() %> </td>
+      <td> <%= numbers.cell_phone() %> </td>
+      <td> <%= numbers.work_phone() %> </td>
+    </tr>
+  </table>
 <% end %>
 <% end %>
 </div>
