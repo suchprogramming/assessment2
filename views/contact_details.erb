@@ -2,7 +2,7 @@
 <h3> Add Contact Info </h3>
 
 <form action='/phones' method="post">
-    <input id='contact_id' name='contact_id' type='hidden' value='<%= @contact.id() %>'>
+  <input id='contact_id' name='contact_id' type='hidden' value='<%= @contact.id() %>'>
   <div class='form-group'>
     <label for='home_phone'>Home Phone</label>
     <input id='home_phone' name='home_phone' class='form-control' type='text' placeholder='Enter a home phone if available'>
@@ -21,7 +21,6 @@
 
 <h3> Current Contact Info For <%= @contact.contact_name()%> </h3>
 
-<div class='list-group'>
 <%if @contact.phone_numbers() == [] %>
   <p> No contact info available! </p>
 <% else %>
@@ -40,5 +39,4 @@
   </table>
 <% end %>
 <% end %>
-</div>
 <a class="btn btn-info" href="/" role="button">Back</a>
