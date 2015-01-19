@@ -1,4 +1,31 @@
-<h3>Here is <%= @contact.contact_name() %>'s phone number!
-<h3><%= @contact.phone_number() %></h3>
+<h3> Add Contact Info for <%= @contact.contact_name()%> </h3>
 
-<a class="btn btn-info" href="/" role="button">Back!</a>
+<form action='/phones' method="post">
+    <input id='contact_id' name='contact_id' type='hidden' value='<%= @contact.id() %>'>
+  <div class='form-group'>
+    <label for='home_phone'>Home Phone</label>
+    <input id='home_phone' name='home_phone' class='form-control' type='text' placeholder='Enter a home phone if available' required>
+  </div>
+  <div class='form-group'>
+    <label for='cell_phone'>Cell Phone</label>
+    <input id='cell_phone' name='cell_phone' class='form-control' type='text' placeholder='Enter a cell phone if available' required>
+  </div>
+  <div class='form-group'>
+    <label for='work_phone'>Work Phone</label>
+    <input id='work_phone' name='work_phone' class='form-control' type='text' placeholder='Enter a work phone if available' required>
+  </div>
+  <button type='submit' class='btn btn-success'>Add!</button>
+</form>
+
+<h3> Current Contact Info </h3>
+
+<div class='list-group'>
+<%if @contact.phone_numbers() == [] %>
+  <p> No contact info available! </p>
+<% else %>
+<% @contact.phone_numbers().each do |numbers| %>
+  <h4> Home Phone: <%= numbers.home_phone() %> Cell Phone: <%= numbers.cell_phone() %> Work Phone: <%= numbers.work_phone() %> </h4> 
+<% end %>
+<% end %>
+</div>
+<a class="btn btn-info" href="/" role="button">Back</a>

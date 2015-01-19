@@ -2,16 +2,20 @@ class Contact
 
 	@@contact_list = []
 
-  attr_reader(:contact_name, :phone_number)
+  attr_reader(:contact_name, :phone_numbers)
 
-  define_method(:initialize) do |attributes|
-    @contact_name = attributes.fetch(:contact_name)
-    @phone_number = attributes.fetch(:phone_number)
+  define_method(:initialize) do |contact_name|
+    @contact_name = contact_name
+    @phone_numbers = []
     @contact_id = @@contact_list.length().+(1)
   end
 
   define_method(:save) do
     @@contact_list.push(self)
+  end
+
+  define_method(:add_phone_numbers) do |number_group|
+    @phone_numbers.push(number_group)
   end
 
   define_singleton_method(:clear) do
@@ -35,7 +39,6 @@ class Contact
   	end
   	matched_contact
   end
-
 end
 
 
